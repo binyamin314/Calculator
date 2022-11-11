@@ -1,0 +1,120 @@
+<html>
+<head>
+<title>MainActivity.java</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<style type="text/css">
+.s0 { color: #cc7832;}
+.s1 { color: #a9b7c6;}
+.s2 { color: #6a8759;}
+.s3 { color: #6897bb;}
+</style>
+</head>
+<body bgcolor="#2b2b2b">
+<table CELLSPACING=0 CELLPADDING=5 COLS=1 WIDTH="100%" BGCOLOR="#606060" >
+<tr><td><center>
+<font face="Arial, Helvetica" color="#000000">
+MainActivity.java</font>
+</center></td></tr></table>
+<pre><span class="s0">package </span><span class="s1">com.example.myfirstprogramhit</span><span class="s0">;</span>
+
+<span class="s0">import </span><span class="s1">androidx.appcompat.app.AppCompatActivity</span><span class="s0">;</span>
+
+<span class="s0">import </span><span class="s1">android.os.Bundle</span><span class="s0">;</span>
+<span class="s0">import </span><span class="s1">android.view.View</span><span class="s0">;</span>
+<span class="s0">import </span><span class="s1">android.widget.Button</span><span class="s0">;</span>
+<span class="s0">import </span><span class="s1">android.widget.TextView</span><span class="s0">;</span>
+
+<span class="s0">public class </span><span class="s1">MainActivity </span><span class="s0">extends </span><span class="s1">AppCompatActivity {</span>
+
+    <span class="s1">TextView result</span><span class="s0">;</span>
+    <span class="s1">String num1 = </span><span class="s2">&quot;&quot;</span><span class="s0">;</span>
+    <span class="s0">boolean </span><span class="s1">isZero = </span><span class="s0">true;</span>
+    <span class="s1">String op = </span><span class="s2">&quot;&quot;</span><span class="s0">;</span>
+
+    <span class="s1">@Override</span>
+    <span class="s0">protected void </span><span class="s1">onCreate(Bundle savedInstanceState) {</span>
+        <span class="s0">super</span><span class="s1">.onCreate(savedInstanceState)</span><span class="s0">;</span>
+        <span class="s1">setContentView(R.layout.activity_main)</span><span class="s0">;</span>
+        <span class="s1">result = findViewById(R.id.textViewResult)</span><span class="s0">;</span>
+
+
+    <span class="s1">}</span>
+    <span class="s0">public void </span><span class="s1">ButtonFunctionNumber(View view)</span>
+    <span class="s1">{</span>
+
+
+            <span class="s1">Button b = (Button) view</span><span class="s0">;</span>
+            <span class="s0">if</span><span class="s1">(isZero)</span>
+            <span class="s1">{ result.setText(b.getText())</span><span class="s0">;</span>
+                <span class="s1">isZero = </span><span class="s0">false; </span><span class="s1">}</span>
+            <span class="s0">else</span>
+                <span class="s1">result.append(b.getText())</span><span class="s0">;</span>
+
+
+    <span class="s1">}</span>
+
+
+    <span class="s0">public void </span><span class="s1">ButtonClear(View view) {</span>
+
+        <span class="s1">result.setText(</span><span class="s2">&quot;0&quot;</span><span class="s1">)</span><span class="s0">;</span>
+        <span class="s1">isZero = </span><span class="s0">true;</span>
+
+    <span class="s1">}</span>
+
+    <span class="s0">public void </span><span class="s1">buttonOperator(View view) {</span>
+
+        <span class="s1">Button b = (Button) view</span><span class="s0">;</span>
+        <span class="s0">switch</span><span class="s1">(view.getId()) {</span>
+
+            <span class="s0">case </span><span class="s1">R.id.buttonPlus:</span>
+                <span class="s1">op = </span><span class="s2">&quot;+&quot;</span><span class="s0">;</span>
+                <span class="s1">num1 = result.getText().toString()</span><span class="s0">;</span>
+                <span class="s1">result.setText(</span><span class="s2">&quot;&quot;</span><span class="s1">)</span><span class="s0">;</span>
+                <span class="s0">break;</span>
+            <span class="s0">case </span><span class="s1">R.id.buttonMinus:</span>
+                <span class="s1">op = </span><span class="s2">&quot;-&quot;</span><span class="s0">;</span>
+                <span class="s1">num1 = result.getText().toString()</span><span class="s0">;</span>
+                <span class="s1">result.setText(</span><span class="s2">&quot;&quot;</span><span class="s1">)</span><span class="s0">;</span>
+                <span class="s0">break;</span>
+            <span class="s0">case </span><span class="s1">R.id.buttonMulti:</span>
+                <span class="s1">op = </span><span class="s2">&quot;*&quot;</span><span class="s0">;</span>
+                <span class="s1">num1 = result.getText().toString()</span><span class="s0">;</span>
+                <span class="s1">result.setText(</span><span class="s2">&quot;&quot;</span><span class="s1">)</span><span class="s0">;</span>
+                <span class="s0">break;</span>
+            <span class="s0">case </span><span class="s1">R.id.buttonDivide:</span>
+                <span class="s1">op = </span><span class="s2">&quot;/&quot;</span><span class="s0">;</span>
+                <span class="s1">num1 = result.getText().toString()</span><span class="s0">;</span>
+                <span class="s1">result.setText(</span><span class="s2">&quot;&quot;</span><span class="s1">)</span><span class="s0">;</span>
+        <span class="s1">}</span>
+    <span class="s1">}</span>
+
+
+    <span class="s0">public void </span><span class="s1">buttonEquals(View view) {</span>
+        <span class="s1">String num2 = result.getText().toString()</span><span class="s0">;</span>
+        <span class="s0">double </span><span class="s1">res = </span><span class="s3">0.0</span><span class="s0">;</span>
+        <span class="s1">String Res = </span><span class="s2">&quot;&quot;</span><span class="s0">;</span>
+        <span class="s0">switch </span><span class="s1">(op)</span>
+        <span class="s1">{</span>
+            <span class="s0">case</span><span class="s2">&quot;+&quot;</span><span class="s1">:</span>
+                <span class="s1">res = Double.parseDouble(num1) + Double.parseDouble(num2)</span><span class="s0">;</span>
+                <span class="s0">break;</span>
+            <span class="s0">case</span><span class="s2">&quot;-&quot;</span><span class="s1">:</span>
+                <span class="s1">res = Double.parseDouble(num1) - Double.parseDouble(num2)</span><span class="s0">;</span>
+                <span class="s0">break;</span>
+            <span class="s0">case</span><span class="s2">&quot;/&quot;</span><span class="s1">:</span>
+                <span class="s1">res = Double.parseDouble(num1) / Double.parseDouble(num2)</span><span class="s0">;</span>
+                <span class="s0">break;</span>
+            <span class="s0">case</span><span class="s2">&quot;*&quot;</span><span class="s1">:</span>
+                <span class="s1">res = Double.parseDouble(num1) * Double.parseDouble(num2)</span><span class="s0">;</span>
+                <span class="s0">break;</span>
+        <span class="s1">}</span>
+        <span class="s1">Res = res+</span><span class="s2">&quot;&quot;</span><span class="s0">;</span>
+        <span class="s0">if</span><span class="s1">(Res.endsWith(</span><span class="s2">&quot;.0&quot;</span><span class="s1">)) {</span>
+            <span class="s1">Res = Res.replace(</span><span class="s2">&quot;.0&quot;</span><span class="s0">, </span><span class="s2">&quot;&quot;</span><span class="s1">)</span><span class="s0">;</span>
+        <span class="s1">}</span>
+        <span class="s1">result.setText(Res)</span><span class="s0">;</span>
+        <span class="s1">isZero = </span><span class="s0">true;</span>
+    <span class="s1">}</span>
+<span class="s1">}</span></pre>
+</body>
+</html>
